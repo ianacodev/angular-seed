@@ -1,9 +1,9 @@
 // Karma configuration
 module.exports = function(config) {
   config.set({
-    basePath: '',
+    basePath: './src',
     frameworks: ['jasmine'],
-    files: [],
+    files: [{ pattern: '**/*.spec.ts', included: true }],
     exclude: [],
     preprocessors: {},
     reporters: ['progress'],
