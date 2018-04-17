@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
+const TypedocWebpackPlugin = require('typedoc-webpack-plugin');
 
 module.exports = {
   cache: true,
@@ -22,7 +23,7 @@ module.exports = {
     chunkFilename: '[name].chunk',
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     sourceMapFilename: '[name].map'
   },
   devtool: 'sourcemap',
@@ -34,7 +35,7 @@ module.exports = {
     hot: true,
     https: false,
     port: 3000,
-    publicPath: '/dist/',
+    publicPath: '/',
     quiet: false,
     stats: {
       buildAt: true,
@@ -82,7 +83,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist'], { root: __dirname, verbose: true }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html'),
+      template: path.resolve(__dirname, 'src', 'index.html'),
       hash: true,
       inject: 'body'
     }),
@@ -92,6 +93,11 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new TypedocWebpackPlugin({
+      target: 'es5',
+      exclude: '**/node_modules/**/*.*',
+      experimentalDecorators: true
+    }),
     new ts.TsConfigPathsPlugin({
       configFile: path.resolve(__dirname, 'tsconfig.json')
     })

@@ -1,5 +1,5 @@
 .title {
-  animation: 1s linear slide-in;
+  animation: 500ms linear slide-in;
   color: #2a00c3;
   display: inline-block;
   font-size: 20px;
@@ -10,7 +10,7 @@
 
 @keyframes slide-in {
   from {
-    transform: translate(100%, 0);
+    transform: translate(60%, 0);
   }
   to {
     transform: translate(0, 0);
