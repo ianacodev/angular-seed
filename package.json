@@ -8,6 +8,8 @@
     "test": "./node_modules/.bin/karma start --singleRun true",
     "prebuild": "npm run install && npm run test",
     "build": "./node_modules/.bin/webpack --mode production",
+    "prestart":
+      "./node_modules/.bin/webpack --config ./src/vendor/webpack.config.js --mode development",
     "start": "./node_modules/.bin/webpack-dev-server --mode development"
   },
   "keywords": [],

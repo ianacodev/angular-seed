@@ -92,6 +92,14 @@ module.exports = {
       clear: true
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: require(path.resolve(
+        __dirname,
+        'src',
+        'vendor',
+        'vendor-manifest.json'
+      ))
+    }),
     new webpack.NamedModulesPlugin(),
     new TypedocWebpackPlugin({
       target: 'es5',
